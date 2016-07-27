@@ -12,6 +12,10 @@ app.use(require('morgan')('dev'));
 
 app.use('/api/airplanes', require('./controllers/airplane'));
 
+app.use('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
+
 var server = app.listen(process.env.PORT || 3000);
 
 module.exports = server;
